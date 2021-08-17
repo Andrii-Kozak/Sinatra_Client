@@ -1,4 +1,8 @@
 require "sinatra_client/version"
+require "rest-client"
+require 'dotenv/load'
+require 'pry'
+require 'active_record'
 
 module SinatraClient
   class Error < StandardError; end
