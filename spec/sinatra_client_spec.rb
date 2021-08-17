@@ -1,14 +1,10 @@
 require 'spec_helper'
 
-RSpec.describe SinatraClient::SinatraClient do
+RSpec.describe SinatraClient do
 
   it "has a version number" do
     expect(SinatraClient::VERSION).not_to be nil
   end
-
-  # it "does something useful" do
-  #   expect(false).to eq(true)
-  # end
 
   subject { described_class.new }
 
