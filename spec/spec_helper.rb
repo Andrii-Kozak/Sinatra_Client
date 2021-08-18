@@ -1,4 +1,4 @@
-# require "bundler/setup"
+require "bundler/setup"
 require "sinatra_client"
 require 'webmock/rspec'
 

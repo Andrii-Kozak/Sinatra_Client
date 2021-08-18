@@ -1,7 +1,7 @@
 require_relative 'lib/sinatra_client/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "sinatra_client_gem"
+  spec.name          = "sinatra_client"
   spec.version       = SinatraClient::VERSION
   spec.authors       = ["Kozak"]
   spec.email         = ["kozakdocs@gmail.com"]

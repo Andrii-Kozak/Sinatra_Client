@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sinatra_client (0.1.1)
+    sinatra_client (0.0.1)
       activerecord
       rest-client
       webmock
