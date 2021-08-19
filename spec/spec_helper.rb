@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "sinatra_client"
 require 'webmock/rspec'
-
+require 'byebug'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

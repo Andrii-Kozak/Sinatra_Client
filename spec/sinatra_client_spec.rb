@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 RSpec.describe SinatraClient do
+  subject { described_class.new(user_id) }
+
+  let!(:user_id) { 1 }
 
   it "has a version number" do
     expect(SinatraClient::VERSION).not_to be nil
   end
 
-  subject { described_class.new }
-
   describe 'User post endpoints' do
-    let!(:user_id) { 1 }
 
     describe '#get_user_post' do
       let!(:url) { "http://#{ENV['SINATRA_HOST']}:#{ENV['SINATRA_PORT']}/api/v1/users/#{user_id}/posts" }
@@ -120,7 +120,6 @@ RSpec.describe SinatraClient do
   end
 
   describe 'Comment post endpoints' do
-    let(:user_id) { 1 }
     let(:post_id) { 1 }
     let(:url) do
       "http://#{ENV['SINATRA_HOST']}:#{ENV['SINATRA_PORT']}/api/v1/posts/#{post_id}/comments"

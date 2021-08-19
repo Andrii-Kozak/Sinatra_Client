@@ -1,13 +1,14 @@
 require "sinatra_client/version"
 require "rest-client"
 require "dotenv/load"
-require "active_record"
+require 'uri'
+
 
 class SinatraClient
-  attr_accessor :current_user, :url
+  attr_accessor :current_user_id, :url
 
-  def initialize(current_user = nil)
-    @current_user = current_user
+  def initialize(current_user_id = nil)
+    @current_user_id = current_user_id
     @url = URI::HTTP.build(host: ENV['SINATRA_HOST'], port: ENV['SINATRA_PORT'], path: '/api/v1')
   end
 
@@ -23,13 +24,13 @@ class SinatraClient
 
   def delete_post(post_id)
     url.path << "/posts/#{post_id}"
-    url.query = { current_user: current_user&.id }.to_query
+    url.query = URI.encode_www_form({ current_user: current_user_id })
     parse RestClient.delete(url.to_s)
   end
 
   def delete_posts_for(postable_id, postable_type)
     url.path << "/postable/#{postable_id}/posts"
-    url.query = { postable_type: postable_type }.to_query
+    url.query = URI.encode_www_form({ postable_type: postable_type })
     parse RestClient.delete(url.to_s)
   end
 
@@ -50,7 +51,7 @@ class SinatraClient
 
   def delete_comment(post_id, comment_guid)
     url.path << "/posts/#{post_id}/comments/#{comment_guid}"
-    url.query = { current_user: current_user&.id }.to_query
+    url.query = URI.encode_www_form({ current_user: current_user_id })
     parse RestClient.delete(url.to_s)
   end
 

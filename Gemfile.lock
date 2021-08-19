@@ -1,8 +1,7 @@
 PATH
   remote: .
   specs:
-    sinatra_client (0.0.1)
-      activerecord
+    sinatra_client (0.0.2)
       rest-client
       webmock
 
@@ -22,11 +21,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activemodel (6.1.4)
-      activesupport (= 6.1.4)
-    activerecord (6.1.4)
-      activemodel (= 6.1.4)
-      activesupport (= 6.1.4)
     activesupport (6.1.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
