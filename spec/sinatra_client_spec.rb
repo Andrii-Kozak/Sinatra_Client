@@ -12,7 +12,8 @@ RSpec.describe SinatraClient do
   describe 'User post endpoints' do
 
     describe '#get_user_post' do
-      let!(:url) { "http://#{ENV['SINATRA_HOST']}:#{ENV['SINATRA_PORT']}/api/v1/users/#{user_id}/posts" }
+      let!(:url) { "http://#{ENV['SINATRA_HOST']}:#{ENV['SINATRA_PORT']}/api/v1/users/#{user_id}/posts?page=1" }
+      let!(:page) { 1 }
 
       context 'when user posts' do
         let(:body) do
@@ -31,7 +32,7 @@ RSpec.describe SinatraClient do
         end
 
         it 'GET request returns success' do
-          response_body = subject.get_user_posts(user_id)
+          response_body = subject.get_user_posts(user_id, page)
           expect(response_body).to eq(body)
         end
       end

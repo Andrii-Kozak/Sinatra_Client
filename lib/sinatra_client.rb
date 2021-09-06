@@ -11,8 +11,9 @@ class SinatraClient
     @url = URI::HTTP.build(userinfo: "#{ENV['API_NAME']}:#{ENV['API_PASSWORD']}", host: ENV['SINATRA_HOST'], port: ENV['SINATRA_PORT'], path: '/api/v1')
   end
 
-  def get_user_posts(user_id)
+  def get_user_posts(user_id, page)
     url.path << "/users/#{user_id}/posts"
+    url.query = URI.encode_www_form({ page: page })
     parse RestClient.get(url.to_s)
   end
 
@@ -70,4 +71,3 @@ class SinatraClient
     JSON.parse(response.body)
   end
 end  
-
