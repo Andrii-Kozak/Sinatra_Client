@@ -76,7 +76,8 @@ RSpec.describe SinatraClient do
 
   describe 'Group post endpoints' do
     let!(:group_id) { 1 }
-    let!(:url) { "http://#{ENV['SINATRA_HOST']}:#{ENV['SINATRA_PORT']}/api/v1/groups/#{group_id}/posts" }
+    let!(:page) { 1 }
+    let!(:url) { "http://#{ENV['SINATRA_HOST']}:#{ENV['SINATRA_PORT']}/api/v1/groups/#{group_id}/posts?page=1" }
 
     describe '#get_group_posts' do
       context 'when user posts' do
@@ -96,7 +97,7 @@ RSpec.describe SinatraClient do
         end
 
         it 'GET request returns success' do
-          response_body = subject.get_group_posts(group_id)
+          response_body = subject.get_group_posts(group_id, page)
           expect(response_body).to eq(body)
         end
       end

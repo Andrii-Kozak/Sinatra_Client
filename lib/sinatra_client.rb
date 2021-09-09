@@ -34,8 +34,9 @@ class SinatraClient
     parse RestClient.delete(url.to_s)
   end
 
-  def get_group_posts(group_id)
+  def get_group_posts(group_id, page)
     url.path << "/groups/#{group_id}/posts"
+    url.query = URI.encode_www_form({ page: page })
     parse RestClient.get(url.to_s)
   end
 
